@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "rootDir": "./src", // Where your source files are
+    "outDir": "./dist", // Where compiled JS goes
+    "module": "NodeNext", // Output format (require/module.exports)
+    "target": "es2022", // JS version to compile to (modern)
+    "esModuleInterop": true, // Allows `import x from 'y'` syntax with CommonJS modules
+    "strict": true, // Enables all strict type-checking
+    "skipLibCheck": true, // Skips type-checking .d.ts files (faster builds)
+    "moduleResolution": "NodeNext", // How TS finds modules (node_modules lookup)
+    "resolveJsonModule": true, // Allows importing .json files
+    "forceConsistentCasingInFileNames": true // Prevents case-sensitivity bugs
+  },
+  "include": ["src/**/*.ts"], // Which files to compile
+  "exclude": ["node_modules"] // Which files to ignore
+}
