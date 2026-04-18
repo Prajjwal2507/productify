@@ -6,7 +6,11 @@ export const users = pgTable("users", {
     name: text("name").notNull(),
     email: text("email").notNull().unique(),
     createdAt: timestamp("created_at", {mode : "date"}).defaultNow(),
-    updatedAt: timestamp("updated_at", {mode : "date"}).defaultNow(),
+   // updatedAt: timestamp("updated_at", {mode : "date"}).defaultNow(),
+   updatedAt: timestamp("updated_at", { mode: "date" })
+    .notNull()
+    .defaultNow()
+    .$onUpdate(() => new Date()),
 }); 
 
 export const products = pgTable("products", {
