@@ -4,6 +4,7 @@ import { relations } from "drizzle-orm";
 export const users = pgTable("users", {
     id: text("id").primaryKey(),
     name: text("name").notNull(),
+    imageUrl: text("image_url"),
     email: text("email").notNull().unique(),
     createdAt: timestamp("created_at", {mode : "date"}).defaultNow(),
    // updatedAt: timestamp("updated_at", {mode : "date"}).defaultNow(),
@@ -14,8 +15,8 @@ export const users = pgTable("users", {
 }); 
 
 export const products = pgTable("products", {
-    id: uuid("id").primaryKey(),
-    name: text("name").notNull(),
+    id: uuid("id").defaultRandom().primaryKey(),
+    title: text("title").notNull(),
     description: text("description").notNull(),
     imageUrl: text("image_url").notNull(),
     createdAt: timestamp("created_at", {mode : "date"}).defaultNow(),
