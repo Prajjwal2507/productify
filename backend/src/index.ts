@@ -10,12 +10,14 @@ import commentRoutes from "./routes/commentRoutes";
 
 const app = express();
 app.use(
-    cors({
-        origin: "http://localhost:5173",
-        credentials: true,
-    }),
+  cors({
+    origin: [
+      "http://localhost:5173",
+      process.env.FRONTEND_URL!,
+    ],
+    credentials: true,
+  })
 );
-
 app.use(clerkMiddleware()); // Use Clerk middleware for authentication, auth obj will be available in req.auth
 app.use(express.json()); // Middleware to parse JSON bodies
 app.use(express.urlencoded({ extended: true })); // Middleware to parse URL-encoded bodies , parse form data
