@@ -9,12 +9,13 @@ import commentRoutes from "./routes/commentRoutes";
 
 
 const app = express();
+const allowedOrigins = process.env.FRONTEND_URLS!
+  .split(",")
+  .map(origin => origin.trim());
+
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      process.env.FRONTEND_URL!,
-    ],
+    origin: allowedOrigins,
     credentials: true,
   })
 );
